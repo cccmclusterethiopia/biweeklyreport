@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -154,8 +154,8 @@
 <body>
     <div class="container">
         <h1>CCCM Cluster Bi-weekly Activity Report Form</h1>
-        <form action="https://ethiotech.net/aba/bwreport/submit_report.php" method="post">
-            <label for="report-title">Report Title:</label>
+        <form id="uploadForm" enctype="multipart/form-data" action="https://ethiotech.net/aba/bwreport/submit_report.php" method="post">
+            <label for="report-title">AoR:</label>
             <input type="text" id="report-title" name="report_title" placeholder="e.g., CCCM Cluster Bi-weekly Activity Report for Shire AoR-" required>
 
             <label for="report-period-start">Report Period (Start Date):</label>
@@ -186,25 +186,25 @@
                 </div>
 
                 <div id="food-target-section" class="hidden-group">
-                    <label>What was the distribution targeted?</label>
+                    <label>Who was the target of the distribution?</label>
                     <div class="radio-group">
-                        <input type="radio" id="food-target-idps-site" name="food_distribution_target" value="IDPs in site" onchange="toggleFoodTargetDivs()">
-                        <label for="food-target-idps-site">IDPs in site</label>
-                        <input type="radio" id="food-target-idps-outside" name="food_distribution_target" value="IDPs outside the site" onchange="toggleFoodTargetDivs()">
-                        <label for="food-target-idps-outside">IDPs outside the site</label>
+                        <input type="radio" id="food-target-idps-site" name="food_distribution_target" value="IDPs on-site" onchange="toggleFoodTargetDivs()">
+                        <label for="food-target-idps-site">IDPs on-site   </label>
+                        <input type="radio" id="food-target-idps-outside" name="food_distribution_target" value="IDPs off-site" onchange="toggleFoodTargetDivs()">
+                        <label for="food-target-idps-outside">IDPs off-site</label>
                         <input type="radio" id="food-target-both" name="food_distribution_target" value="Both" onchange="toggleFoodTargetDivs()">
                         <label for="food-target-both">Both</label>
                     </div>
 
                     <div id="food-target-idp-site-details" class="hidden-group">
-                        <h3>IDPs in Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="food-idp-site-container">
                             </div>
                         <button type="button" class="add-button" onclick="addEntry('food-idp-site-container', 'food-idp-site-template')">Add Site</button>
                     </div>
 
                     <div id="food-target-idp-outside-details" class="hidden-group">
-                        <h3>IDPs Outside Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="food-idp-outside-container">
                             </div>
                         <button type="button" class="add-button" onclick="addEntry('food-idp-outside-container', 'food-idp-outside-template')">Add Catchment Area</button>
@@ -218,7 +218,7 @@
                     </div>
                 </div>
 
-                <label for="food-sector-challenge">Sector Specific Challenge (max 300 characters):</label>
+                <label for="food-sector-challenge">Sector-Specific Challenge (max 300 characters):</label>
                 <textarea id="food-sector-challenge" name="food_sector_challenge" maxlength="300" placeholder="e.g., Inconsistent food assistance, ration cuts, exclusion of households."></textarea>
                 <div class="char-count" id="food-sector-challenge-count">0/300</div>
             </div>
@@ -230,11 +230,11 @@
                         <input type="text" name="food_site_name[]" placeholder="e.g., Site A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="food_site_hhs_benefited[]" min="0" placeholder="e.g., 500" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Gap Number:</label>
+                        <label>Gap Number: (Unbenefited Households)</label>
                         <input type="number" name="food_site_gap_number[]" min="0" placeholder="e.g., 100" required>
                         <button type="button" class="remove-button" onclick="this.closest('.dynamic-entry').remove()">Remove</button>
                     </div>
@@ -248,11 +248,11 @@
                         <input type="text" name="food_catchment_name[]" placeholder="e.g., Catchment Area A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="food_catchment_hhs_benefited[]" min="0" placeholder="e.g., 300" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Gap Number:</label>
+                        <label>Gap Number: (Unbenefited Households)</label>
                         <input type="number" name="food_catchment_gap_number[]" min="0" placeholder="e.g., 50" required>
                         <button type="button" class="remove-button" onclick="this.closest('.dynamic-entry').remove()">Remove</button>
                     </div>
@@ -266,11 +266,11 @@
                         <input type="text" name="food_both_name[]" placeholder="e.g., Site A or Catchment Area A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="food_both_hhs_benefited[]" min="0" placeholder="e.g., 400" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Gap Number:</label>
+                        <label>Gap Number: (Unbenefited Households)</label>
                         <input type="number" name="food_both_gap_number[]" min="0" placeholder="e.g., 75" required>
                     </div>
                     <div class="dynamic-entry-row">
@@ -335,24 +335,24 @@
                     <label for="hygiene-dist-no">No</label>
                 </div>
                 <div id="wash-hygiene-target-section" class="hidden-group">
-                    <label>What was the distribution targeted?</label>
+                    <label>Who was the target of the distribution?</label>
                     <div class="radio-group">
-                        <input type="radio" id="hygiene-target-idps-site" name="wash_hygiene_distribution_target" value="IDPs in site" onchange="toggleHygieneTargetDivs()">
-                        <label for="hygiene-target-idps-site">IDPs in site</label>
-                        <input type="radio" id="hygiene-target-idps-outside" name="wash_hygiene_distribution_target" value="IDPs outside the site" onchange="toggleHygieneTargetDivs()">
-                        <label for="hygiene-target-idps-outside">IDPs outside the site</label>
+                        <input type="radio" id="hygiene-target-idps-site" name="wash_hygiene_distribution_target" value="IDPs on-site" onchange="toggleHygieneTargetDivs()">
+                        <label for="hygiene-target-idps-site">IDPs on-site </label>
+                        <input type="radio" id="hygiene-target-idps-outside" name="wash_hygiene_distribution_target" value="IDPs off-site" onchange="toggleHygieneTargetDivs()">
+                        <label for="hygiene-target-idps-outside">IDPs off-site</label>
                         <input type="radio" id="hygiene-target-both" name="wash_hygiene_distribution_target" value="Both" onchange="toggleHygieneTargetDivs()">
                         <label for="hygiene-target-both">Both</label>
                     </div>
 
                     <div id="wash-hygiene-target-idp-site-details" class="hidden-group">
-                        <h3>IDPs in Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="wash-hygiene-idp-site-container">
                             </div>
                         <button type="button" class="add-button" onclick="addEntry('wash-hygiene-idp-site-container', 'wash-hygiene-idp-site-template')">Add Site</button>
                     </div>
                     <div id="wash-hygiene-target-idp-outside-details" class="hidden-group">
-                        <h3>IDPs Outside Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="wash-hygiene-idp-outside-container">
                             </div>
                         <button type="button" class="add-button" onclick="addEntry('wash-hygiene-idp-outside-container', 'wash-hygiene-idp-outside-template')">Add Catchment Area</button>
@@ -375,20 +375,20 @@
                 <div id="wash-od-where-section" class="hidden-group">
                     <label>Where?</label>
                     <div class="radio-group">
-                        <input type="radio" id="od-where-site" name="wash_od_where" value="in site" onchange="toggleWashODLocationDivs()">
-                        <label for="od-where-site">in site</label>
+                        <input type="radio" id="od-where-site" name="wash_od_where" value="On-site" onchange="toggleWashODLocationDivs()">
+                        <label for="od-where-site">On-site</label>
                         <input type="radio" id="od-where-catchment" name="wash_od_where" value="in catchment areas" onchange="toggleWashODLocationDivs()">
                         <label for="od-where-catchment">in catchment areas</label>
                         <input type="radio" id="od-where-both" name="wash_od_where" value="Both" onchange="toggleWashODLocationDivs()">
                         <label for="od-where-both">Both</label>
                     </div>
                     <div id="wash-od-site-details" class="hidden-group">
-                        <h3>In Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="wash-od-site-container"></div>
                         <button type="button" class="add-button" onclick="addEntry('wash-od-site-container', 'wash-od-site-template')">Add Site</button>
                     </div>
                     <div id="wash-od-catchment-details" class="hidden-group">
-                        <h3>In Catchment Area Details:</h3>
+                        <h3>Details:</h3>
                         <div id="wash-od-catchment-container"></div>
                         <button type="button" class="add-button" onclick="addEntry('wash-od-catchment-container', 'wash-od-catchment-template')">Add Catchment Area</button>
                     </div>
@@ -409,20 +409,20 @@
                 <div id="wash-stagnant-where-section" class="hidden-group">
                     <label>Where?</label>
                     <div class="radio-group">
-                        <input type="radio" id="stagnant-where-site" name="wash_stagnant_where" value="in site" onchange="toggleWashStagnantLocationDivs()">
-                        <label for="stagnant-where-site">in site</label>
+                        <input type="radio" id="stagnant-where-site" name="wash_stagnant_where" value="On-site" onchange="toggleWashStagnantLocationDivs()">
+                        <label for="stagnant-where-site">On-site</label>
                         <input type="radio" id="stagnant-where-catchment" name="wash_stagnant_where" value="in catchment areas" onchange="toggleWashStagnantLocationDivs()">
                         <label for="stagnant-where-catchment">in catchment areas</label>
                         <input type="radio" id="stagnant-where-both" name="wash_stagnant_where" value="Both" onchange="toggleWashStagnantLocationDivs()">
                         <label for="stagnant-where-both">Both</label>
                     </div>
                     <div id="wash-stagnant-site-details" class="hidden-group">
-                        <h3>In Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="wash-stagnant-site-container"></div>
                         <button type="button" class="add-button" onclick="addEntry('wash-stagnant-site-container', 'wash-stagnant-site-template')">Add Site</button>
                     </div>
                     <div id="wash-stagnant-catchment-details" class="hidden-group">
-                        <h3>In Catchment Area Details:</h3>
+                        <h3>Details:</h3>
                         <div id="wash-stagnant-catchment-container"></div>
                         <button type="button" class="add-button" onclick="addEntry('wash-stagnant-catchment-container', 'wash-stagnant-catchment-template')">Add Catchment Area</button>
                     </div>
@@ -459,11 +459,11 @@
                         <input type="text" name="wash_hygiene_site_name[]" placeholder="e.g., Site A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="wash_hygiene_site_hhs_benefited[]" min="0" placeholder="e.g., 500" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Gap Number:</label>
+                        <label>Gap Number: (Unbenefited Households)</label>
                         <input type="number" name="wash_hygiene_site_gap_number[]" min="0" placeholder="e.g., 100" required>
                         <button type="button" class="remove-button" onclick="this.closest('.dynamic-entry').remove()">Remove</button>
                     </div>
@@ -476,11 +476,11 @@
                         <input type="text" name="wash_hygiene_catchment_name[]" placeholder="e.g., Catchment Area A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="wash_hygiene_catchment_hhs_benefited[]" min="0" placeholder="e.g., 300" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Gap Number:</label>
+                        <label>Gap Number: (Unbenefited Households)</label>
                         <input type="number" name="wash_hygiene_catchment_gap_number[]" min="0" placeholder="e.g., 50" required>
                         <button type="button" class="remove-button" onclick="this.closest('.dynamic-entry').remove()">Remove</button>
                     </div>
@@ -493,11 +493,11 @@
                         <input type="text" name="wash_hygiene_both_name[]" placeholder="e.g., Site A or Catchment Area A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="wash_hygiene_both_hhs_benefited[]" min="0" placeholder="e.g., 400" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Gap Number:</label>
+                        <label>Gap Number: (Unbenefited Households)</label>
                         <input type="number" name="wash_hygiene_both_gap_number[]" min="0" placeholder="e.g., 75" required>
                     </div>
                     <div class="dynamic-entry-row">
@@ -578,28 +578,28 @@
                 <h2>Health</h2>
                 <label>Is health service currently operational?</label>
                 <div class="radio-group">
-                    <input type="radio" id="health-op-site-no-catch" name="health_service_operational" value="Yes in the site but no in the catchment area" onchange="toggleHealthOperationalDivs()">
-                    <label for="health-op-site-no-catch">Yes in the site but no in the catchment area</label><br>
-                    <input type="radio" id="health-op-catch-no-site" name="health_service_operational" value="Yes in the catchment area but no in the site" onchange="toggleHealthOperationalDivs()">
-                    <label for="health-op-catch-no-site">Yes in the catchment area but no in the site</label><br>
-                    <input type="radio" id="health-op-both-yes" name="health_service_operational" value="Yes in both" onchange="toggleHealthOperationalDivs()">
-                    <label for="health-op-both-yes">Yes in both</label><br>
-                    <input type="radio" id="health-op-both-no" name="health_service_operational" value="No in both" onchange="toggleHealthOperationalDivs()">
-                    <label for="health-op-both-no">No in both</label>
+                    <input type="radio" id="health-op-site-no-catch" name="health_service_operational" value="Yes, on-site but not in the catchment area." onchange="toggleHealthOperationalDivs()">
+                    <label for="health-op-site-no-catch">Yes, on-site but not in the catchment area.</label><br>
+                    <input type="radio" id="health-op-catch-no-site" name="health_service_operational" value="Yes, in the catchment area but not on-site." onchange="toggleHealthOperationalDivs()">
+                    <label for="health-op-catch-no-site">Yes, in the catchment area but not on-site.</label><br>
+                    <input type="radio" id="health-op-both-yes" name="health_service_operational" value="Yes, in both." onchange="toggleHealthOperationalDivs()">
+                    <label for="health-op-both-yes">Yes, in both.</label><br>
+                    <input type="radio" id="health-op-both-no" name="health_service_operational" value="No, in neither." onchange="toggleHealthOperationalDivs()">
+                    <label for="health-op-both-no">No, in neither.</label>
                 </div>
 
                 <div id="health-catchment-out-details" class="hidden-group">
-                    <label>List the catchment area names which are out of health facility:</label>
+                    <label>List the catchment area names that lack a health facility:</label>
                     <div id="health-catchment-out-container"></div>
                     <button type="button" class="add-button" onclick="addEntry('health-catchment-out-container', 'health-catchment-out-template')">Add Catchment Area</button>
                 </div>
                 <div id="health-site-out-details" class="hidden-group">
-                    <label>List the site names which are out of health facility:</label>
+                    <label>List the site names that lack a health facility:</label>
                     <div id="health-site-out-container"></div>
                     <button type="button" class="add-button" onclick="addEntry('health-site-out-container', 'health-site-out-template')">Add Site</button>
                 </div>
                 <div id="health-both-out-details" class="hidden-group">
-                    <label>List the names (Site/Catchment Area) which are out of health facility:</label>
+                    <label>List the names of sites/catchment areas that lack a health facility:</label>
                     <div id="health-both-out-container"></div>
                     <button type="button" class="add-button" onclick="addEntry('health-both-out-container', 'health-both-out-template', true)">Add Entry</button>
                 </div>
@@ -615,12 +615,12 @@
                 </div>
 
                 <label>Are chronic patients (e.g., for diabetes, hypertension, epilepsy) able to access their required medications regularly?</label>
-                <div class="radio-group">
-                    <input type="radio" id="chronic-meds-yes" name="health_chronic_meds_access" value="Yes">
-                    <label for="chronic-meds-yes">Yes</label>
-                    <input type="radio" id="chronic-meds-no" name="health_chronic-meds-access" value="No">
-                    <label for="chronic-meds-no">No</label>
-                </div>
+                    <div class="radio-group">
+                        <input type="radio" id="chronic-meds-yes" name="health_chronic_meds_access" value="Yes">
+                        <label for="chronic-meds-yes">Yes</label>
+                        <input type="radio" id="chronic-meds-no" name="health_chronic_meds_access" value="No">
+                        <label for="chronic-meds-no">No</label>
+                    </div>
 
                 <label>Were there any reported deaths related to lack of health access in the past month?</label>
                 <div class="radio-group">
@@ -683,23 +683,23 @@
                 </div>
 
                 <div id="esnfi-target-section" class="hidden-group">
-                    <label>What was the distribution targeted?</label>
+                    <label>Who was the target of the distribution?</label>
                     <div class="radio-group">
-                        <input type="radio" id="esnfi-target-idps-site" name="esnfi_distribution_target" value="IDPs in site" onchange="toggleESNFITargetDivs()">
-                        <label for="esnfi-target-idps-site">IDPs in site</label>
-                        <input type="radio" id="esnfi-target-idps-outside" name="esnfi_distribution_target" value="IDPs outside the site" onchange="toggleESNFITargetDivs()">
-                        <label for="esnfi-target-idps-outside">IDPs outside the site</label>
+                        <input type="radio" id="esnfi-target-idps-site" name="esnfi_distribution_target" value="IDPs on-site" onchange="toggleESNFITargetDivs()">
+                        <label for="esnfi-target-idps-site">IDPs on-site </label>
+                        <input type="radio" id="esnfi-target-idps-outside" name="esnfi_distribution_target" value="IDPs off-site" onchange="toggleESNFITargetDivs()">
+                        <label for="esnfi-target-idps-outside">IDPs off-site</label>
                         <input type="radio" id="esnfi-target-both" name="esnfi_distribution_target" value="Both" onchange="toggleESNFITargetDivs()">
                         <label for="esnfi-target-both">Both</label>
                     </div>
 
                     <div id="esnfi-target-idp-site-details" class="hidden-group">
-                        <h3>IDPs in Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="esnfi-idp-site-container"></div>
                         <button type="button" class="add-button" onclick="addEntry('esnfi-idp-site-container', 'esnfi-idp-site-template')">Add Site</button>
                     </div>
                     <div id="esnfi-target-idp-outside-details" class="hidden-group">
-                        <h3>IDPs Outside Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="esnfi-idp-outside-container"></div>
                         <button type="button" class="add-button" onclick="addEntry('esnfi-idp-outside-container', 'esnfi-idp-outside-template')">Add Catchment Area</button>
                     </div>
@@ -719,13 +719,13 @@
                 </div>
 
                 <div id="esnfi-damage-site-details" class="hidden-group">
-                    <label>If yes, in which sites how many households affected by the damage and need immediate support?</label>
+                    <label>If yes, please specify the sites, and for each, the number of households affected by the damage and needing immediate support.</label>
                     <div id="esnfi-damage-site-container"></div>
                     <button type="button" class="add-button" onclick="addEntry('esnfi-damage-site-container', 'esnfi-damage-site-template')">Add Site</button>
                 </div>
 
                 <div id="esnfi-damage-catchment-radio" class="hidden-group">
-                    <label>Do you need to report shelter damage in catchment area?</label>
+                    <label>Do you need to report shelter damage in catchment areas?</label>
                     <div class="radio-group">
                         <input type="radio" id="shelter-damage-catchment-yes" name="esnfi_shelter_damage_catchment_report" value="Yes" onchange="toggleDisplay('esnfi_shelter_damage_catchment_report', 'esnfi-damage-catchment-details', 'Yes')">
                         <label for="shelter-damage-catchment-yes">Yes</label>
@@ -735,7 +735,7 @@
                 </div>
 
                 <div id="esnfi-damage-catchment-details" class="hidden-group">
-                    <label>If yes, in which catchment areas how many households affected by the damage and need immediate support?</label>
+                    <label>If yes, please specify the catchment areas, and for each, the number of households affected by the damage and needing immediate support.</label>
                     <div id="esnfi-damage-catchment-container"></div>
                     <button type="button" class="add-button" onclick="addEntry('esnfi-damage-catchment-container', 'esnfi-damage-catchment-template')">Add Catchment Area</button>
                 </div>
@@ -751,11 +751,11 @@
                         <input type="text" name="esnfi_site_name[]" placeholder="e.g., Site A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="esnfi_site_hhs_benefited[]" min="0" placeholder="e.g., 500" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Gap Number:</label>
+                        <label>Gap Number: (Unbenefited Households)</label>
                         <input type="number" name="esnfi_site_gap_number[]" min="0" placeholder="e.g., 100" required>
                         <button type="button" class="remove-button" onclick="this.closest('.dynamic-entry').remove()">Remove</button>
                     </div>
@@ -768,11 +768,11 @@
                         <input type="text" name="esnfi_catchment_name[]" placeholder="e.g., Catchment Area A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="esnfi_catchment_hhs_benefited[]" min="0" placeholder="e.g., 300" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Gap Number:</label>
+                        <label>Gap Number: (Unbenefited Households)</label>
                         <input type="number" name="esnfi_catchment_gap_number[]" min="0" placeholder="e.g., 50" required>
                         <button type="button" class="remove-button" onclick="this.closest('.dynamic-entry').remove()">Remove</button>
                     </div>
@@ -785,11 +785,11 @@
                         <input type="text" name="esnfi_both_name[]" placeholder="e.g., Site A or Catchment Area A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="esnfi_both_hhs_benefited[]" min="0" placeholder="e.g., 400" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Gap Number:</label>
+                        <label>Gap Number: (Unbenefited Households)</label>
                         <input type="number" name="esnfi_both_gap_number[]" min="0" placeholder="e.g., 75" required>
                     </div>
                     <div class="dynamic-entry-row">
@@ -832,14 +832,14 @@
                 <h2>Education</h2>
                 <label>Is there formal education facility in the area?</label>
                 <div class="radio-group">
-                    <input type="radio" id="edu-facility-yes-exclude-idps-site" name="edu_facility_available" value="yes, but it excludes IDPs in site" onchange="toggleEducationDetails()">
-                    <label for="edu-facility-yes-exclude-idps-site">Yes, but it excludes IDPs in site</label><br>
-                    <input type="radio" id="edu-facility-yes-exclude-idps-outside" name="edu_facility_available" value="yes but it excludes IDPs outside the site" onchange="toggleEducationDetails()">
-                    <label for="edu-facility-yes-exclude-idps-outside">Yes, but it excludes IDPs outside the site</label><br>
-                    <input type="radio" id="edu-facility-yes-exclude-idps-both" name="edu_facility_available" value="yes but it excludes IDPs both in the site and outside the site" onchange="toggleEducationDetails()">
-                    <label for="edu-facility-yes-exclude-idps-both">Yes, but it excludes IDPs both in the site and outside the site</label><br>
-                    <input type="radio" id="edu-facility-yes-include-both" name="edu_facility_available" value="yes and it gives the service for both idps in the site and outside the site" onchange="toggleEducationDetails()">
-                    <label for="edu-facility-yes-include-both">Yes, and it gives the service for both IDPs in the site and outside the site</label><br>
+                    <input type="radio" id="edu-facility-yes-exclude-idps-site" name="edu_facility_available" value="Yes, but it excludes IDPs on-site." onchange="toggleEducationDetails()">
+                    <label for="edu-facility-yes-exclude-idps-site">Yes, but it excludes IDPs on-site.</label><br>
+                    <input type="radio" id="edu-facility-yes-exclude-idps-outside" name="edu_facility_available" value="Yes, but it excludes IDPs off-site" onchange="toggleEducationDetails()">
+                    <label for="edu-facility-yes-exclude-idps-outside">Yes, but it excludes IDPs off-site</label><br>
+                    <input type="radio" id="edu-facility-yes-exclude-idps-both" name="edu_facility_available" value="Yes, but it excludes IDPs both on-site and off-site." onchange="toggleEducationDetails()">
+                    <label for="edu-facility-yes-exclude-idps-both">Yes, but it excludes IDPs both on-site and off-site.</label><br>
+                    <input type="radio" id="edu-facility-yes-include-both" name="edu_facility_available" value="Yes, and it provides service to both on-site and off-site IDPs." onchange="toggleEducationDetails()">
+                    <label for="edu-facility-yes-include-both">Yes, and it provides service to both on-site and off-site IDPs.</label><br>
                     <input type="radio" id="edu-facility-no" name="edu_facility_available" value="no" onchange="toggleEducationDetails()">
                     <label for="edu-facility-no">No</label>
                 </div>
@@ -856,12 +856,12 @@
 
                 <label>Risk of child labor, begging, and exposure to GBV increases without access to schooling?</label>
                 <div class="radio-group">
-                    <input type="radio" id="risk-yes-site" name="edu_risk_increase" value="yes, especially for IDPs in the site">
-                    <label for="risk-yes-site">Yes, especially for IDPs in the site</label><br>
-                    <input type="radio" id="risk-yes-outside" name="edu_risk_increase" value="yes especially for IDPs outside the site">
-                    <label for="risk-yes-outside">Yes, especially for IDPs outside the site</label><br>
-                    <input type="radio" id="risk-yes-both-high" name="edu_risk_increase" value="Yes for both IDPs in the site and outside the site at high level">
-                    <label for="risk-yes-both-high">Yes for both IDPs in the site and outside the site at high level</label><br>
+                    <input type="radio" id="risk-yes-site" name="edu_risk_increase" value="Yes, especially for IDPs on-site.">
+                    <label for="risk-yes-site">Yes, especially for IDPs on-site.</label><br>
+                    <input type="radio" id="risk-yes-outside" name="edu_risk_increase" value="Yes, especially for IDPs off-site.">
+                    <label for="risk-yes-outside">Yes, especially for IDPs off-site.</label><br>
+                    <input type="radio" id="risk-yes-both-high" name="edu_risk_increase" value="Yes, for both on-site and off-site IDPs, at a high level.">
+                    <label for="risk-yes-both-high">Yes, for both on-site and off-site IDPs, at a high level.</label><br>
                     <input type="radio" id="risk-no" name="edu_risk_increase" value="no">
                     <label for="risk-no">No</label>
                 </div>
@@ -892,7 +892,7 @@
                     <label for="gbv-overcrowding-no">No</label>
                 </div>
 
-                <label>In average, How many IDPs live in shared shelter like collective centers?</label>
+                <label>On average, how many IDPs live in shared shelter like collective centers?</label>
                 <div class="dynamic-entry-row" style="align-items: flex-start;">
                     <label for="shared-shelter-hhs" style="min-width: 150px; margin-right: 10px;">Number of HHs:</label>
                     <input type="number" id="shared-shelter-hhs" name="protection_shared_shelter_hhs" min="0" placeholder="e.g., 200" style="flex: 1;">
@@ -911,23 +911,23 @@
                     <label for="dignity-kits-no">No</label>
                 </div>
                 <div id="protection-dignity-kits-target-section" class="hidden-group">
-                    <label>What was the distribution targeted?</label>
+                    <label>Who was the target of the distribution?</label>
                     <div class="radio-group">
-                        <input type="radio" id="dignity-target-idps-site" name="protection_dignity_kits_target" value="IDPs in site" onchange="toggleDignityKitsTargetDivs()">
-                        <label for="dignity-target-idps-site">IDPs in site</label>
-                        <input type="radio" id="dignity-target-idps-outside" name="protection_dignity_kits_target" value="IDPs outside the site" onchange="toggleDignityKitsTargetDivs()">
-                        <label for="dignity-target-idps-outside">IDPs outside the site</label>
+                        <input type="radio" id="dignity-target-idps-site" name="protection_dignity_kits_target" value="IDPs on-site" onchange="toggleDignityKitsTargetDivs()">
+                        <label for="dignity-target-idps-site">IDPs on-site</label>
+                        <input type="radio" id="dignity-target-idps-outside" name="protection_dignity_kits_target" value="IDPs off-site" onchange="toggleDignityKitsTargetDivs()">
+                        <label for="dignity-target-idps-outside">IDPs off-site</label>
                         <input type="radio" id="dignity-target-both" name="protection_dignity_kits_target" value="Both" onchange="toggleDignityKitsTargetDivs()">
                         <label for="dignity-target-both">Both</label>
                     </div>
 
                     <div id="protection-dignity-kits-idp-site-details" class="hidden-group">
-                        <h3>IDPs in Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="protection-dignity-kits-idp-site-container"></div>
                         <button type="button" class="add-button" onclick="addEntry('protection-dignity-kits-idp-site-container', 'protection-dignity-kits-idp-site-template')">Add Site</button>
                     </div>
                     <div id="protection-dignity-kits-idp-outside-details" class="hidden-group">
-                        <h3>IDPs Outside Site Details:</h3>
+                        <h3>Details:</h3>
                         <div id="protection-dignity-kits-idp-outside-container"></div>
                         <button type="button" class="add-button" onclick="addEntry('protection-dignity-kits-idp-outside-container', 'protection-dignity-kits-idp-outside-template')">Add Catchment Area</button>
                     </div>
@@ -955,7 +955,7 @@
                         <input type="text" name="protection_dignity_site_name[]" placeholder="e.g., Site A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="protection_dignity_site_hhs_benefited[]" min="0" placeholder="e.g., 500" required>
                         <button type="button" class="remove-button" onclick="this.closest('.dynamic-entry').remove()">Remove</button>
                     </div>
@@ -968,7 +968,7 @@
                         <input type="text" name="protection_dignity_catchment_name[]" placeholder="e.g., Catchment Area A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="protection_dignity_catchment_hhs_benefited[]" min="0" placeholder="e.g., 300" required>
                         <button type="button" class="remove-button" onclick="this.closest('.dynamic-entry').remove()">Remove</button>
                     </div>
@@ -981,7 +981,7 @@
                         <input type="text" name="protection_dignity_both_name[]" placeholder="e.g., Site A or Catchment Area A" required>
                     </div>
                     <div class="dynamic-entry-row">
-                        <label>Number of HHs benefited:</label>
+                        <label>Number of Beneficiary Households:</label>
                         <input type="number" name="protection_dignity_both_hhs_benefited[]" min="0" placeholder="e.g., 400" required>
                     </div>
                     <div class="dynamic-entry-row">
@@ -1038,16 +1038,77 @@
                 <textarea id="aba-partners" name="aba_partners_service" placeholder="List key ABA partners and the specific services they provided during the reporting period."></textarea>
             </div>
 
-            <div class="section">
-                <h2>Photo Gallery:</h2>
-                <p>Please note: File upload functionality requires server-side processing.</p>
-                <label for="photo-upload">Upload relevant photos:</label>
-                <input type="file" id="photo-upload" name="photo_gallery[]" multiple accept="image/*">
+        
+        <div class="section" id="photoUploadModal" tabindex="-1" aria-labelledby="photoUploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="photoUploadModalLabel">Upload Photos</h2>
+               
             </div>
+            <div class="modal-body">
+              
+                    <input type="file" class="form-control" id="photoInput" name="photos[]" multiple accept="image/*">
+              
+            </div>
+            <div class="modal-footer">
+                
+              <button type="button" class="btn" id="sendBtn" style="background: rgb(236, 107, 77); border: none; color: black;">
+  Send Photos
+</button>
 
-            <button type="submit" class="submit-button">Submit Report</button>
-        </form>
+
+            </div>
+        </div>
     </div>
+</div>
+
+
+        
+            <button type="submit" class="submit-button" >Submit Report</button>
+        </form>
+    
+    
+    </div>
+    
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#sendBtn').on('click', function() {
+        const formData = new FormData($('#uploadForm')[0]);
+
+        if ($('#photoInput')[0].files.length === 0) {
+            alert('Please select photos to upload.');
+            return;
+        }
+
+        $.ajax({
+            url: 'https://ethiotech.net/aba/bwreport/upload.php', // Your PHP script
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                alert(response); // Show success/error from PHP
+                $('#photoUploadModal').modal('hide'); // Close modal
+                $('#photoInput').val(''); // Clear input
+            },
+            error: function(xhr, status, error) {
+                console.error('Upload error:', error);
+                alert('An error occurred during upload.');
+            }
+        });
+    });
+
+    // Clear file input when modal is closed
+    $('#photoUploadModal').on('hidden.bs.modal', function () {
+        $('#photoInput').val('');
+    });
+});
+</script>
 
     <script>
         let counter = 0; // Global counter for dynamic radio button names
@@ -1123,9 +1184,9 @@
             clearInputs(bothDiv);
 
             if (target) {
-                if (target.value === 'IDPs in site') {
+                if (target.value === 'IDPs on-site') {
                     idpSiteDiv.style.display = 'block';
-                } else if (target.value === 'IDPs outside the site') {
+                } else if (target.value === 'IDPs off-site') {
                     idpOutsideDiv.style.display = 'block';
                 } else if (target.value === 'Both') {
                     bothDiv.style.display = 'block';
@@ -1149,9 +1210,9 @@
             clearInputs(bothDiv);
 
             if (target) {
-                if (target.value === 'IDPs in site') {
+                if (target.value === 'IDPs on-site') {
                     idpSiteDiv.style.display = 'block';
-                } else if (target.value === 'IDPs outside the site') {
+                } else if (target.value === 'IDPs off-site') {
                     idpOutsideDiv.style.display = 'block';
                 } else if (target.value === 'Both') {
                     bothDiv.style.display = 'block';
@@ -1174,7 +1235,7 @@
             clearInputs(bothDiv);
 
             if (target) {
-                if (target.value === 'in site') {
+                if (target.value === 'On-site') {
                     siteDiv.style.display = 'block';
                 } else if (target.value === 'in catchment areas') {
                     catchmentDiv.style.display = 'block';
@@ -1199,7 +1260,7 @@
             clearInputs(bothDiv);
 
             if (target) {
-                if (target.value === 'in site') {
+                if (target.value === 'On-site') {
                     siteDiv.style.display = 'block';
                 } else if (target.value === 'in catchment areas') {
                     catchmentDiv.style.display = 'block';
@@ -1225,11 +1286,11 @@
     clearInputs(bothOutDiv);
 
             if (target) {
-                if (target.value === 'Yes in the site but no in the catchment area') {
+                if (target.value === 'Yes, on-site but not in the catchment area.') {
                     catchmentOutDiv.style.display = 'block';
-                } else if (target.value === 'Yes in the catchment area but no in the site') {
+                } else if (target.value === 'Yes, in the catchment area but not on-site.') {
                     siteOutDiv.style.display = 'block';
-                } else if (target.value === 'No in both') {
+                } else if (target.value === 'No, in neither.') {
                     bothOutDiv.style.display = 'block';
                 }
             }
@@ -1251,9 +1312,9 @@
             clearInputs(bothDiv);
 
             if (target) {
-                if (target.value === 'IDPs in site') {
+                if (target.value === 'IDPs on-site') {
                     idpSiteDiv.style.display = 'block';
-                } else if (target.value === 'IDPs outside the site') {
+                } else if (target.value === 'IDPs off-site') {
                     idpOutsideDiv.style.display = 'block';
                 } else if (target.value === 'Both') {
                     bothDiv.style.display = 'block';
@@ -1320,9 +1381,9 @@
             clearInputs(bothDiv);
 
             if (target) {
-                if (target.value === 'IDPs in site') {
+                if (target.value === 'IDPs on-site') {
                     idpSiteDiv.style.display = 'block';
-                } else if (target.value === 'IDPs outside the site') {
+                } else if (target.value === 'IDPs off-site') {
                     idpOutsideDiv.style.display = 'block';
                 } else if (target.value === 'Both') {
                     bothDiv.style.display = 'block';
